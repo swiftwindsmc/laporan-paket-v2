@@ -22,38 +22,6 @@ $jnes = $_POST['jnes'];
 $jnef = $_POST['jnef'];
 $jnem = $_POST['jnem'];
 
-
-$conn = new mysqli("localhost","root","","test2");
-    $stmt = $conn->prepare("INSERT INTO LAP(fname,sicepats,sicepatf) VALUES(?,?,?)");
-    if (!$stmt) {
-        echo "false";
-    }
-    else {
-        $stmt->bind_param("sii",$fname,$sicepats,$sicepatf);
-        $stmt->execute();
-        // echo "entry success";
-        $stmt->close();
-        //writing query
-        $sql = "SELECT * FROM lap ORDER BY id DESC LIMIT 1";
-        //making query, acq result
-        $result = mysqli_query($conn,$sql);
-        $resultCheck = mysqli_num_rows($result);
-        $datas = array();
-
-        if ($resultCheck > 0){
-            $row = mysqli_fetch_assoc($result);
-            $datas[] = $row;
-            // pre_r ($datas);
-           
-        }
-    }
-
-    function pre_r($datas){
-        echo '<pre>';
-        print_r($datas);
-        echo '<pre>';
-    }
-
 ?>
 
 <!DOCTYPE html>
